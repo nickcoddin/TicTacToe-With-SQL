@@ -2,10 +2,8 @@
 
 namespace NewTicTacToeWithSQL.DataAccess
 {
-    internal class CreateDbInfo
+     class CreateDbInfo
     {
-        //Game game = new Game();
-
         //Method 1: Adds time in database!
         public void AddGame(Game game)
         {
