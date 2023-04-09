@@ -1,4 +1,5 @@
 ﻿using NewTicTacToeWithSQL.DataAccess;
+using NewTicTacToeWithSQL.Entities;
 
 namespace NewTicTacToeWithSQL.GameDetails
 {
@@ -6,6 +7,7 @@ namespace NewTicTacToeWithSQL.GameDetails
     {
         //Declaring fields
         private List<char> playingBoardList;
+        private Game game;
         private PlayerManager playerManager ;
         private CreateDbInfo createDbInfo;
         private UpdateDbinfo updateDbinfo;
@@ -25,15 +27,16 @@ namespace NewTicTacToeWithSQL.GameDetails
             this.playerNumber = playerNumber;
             playerManager = new PlayerManager();
             createDbInfo = new CreateDbInfo();
-            updateDbinfo= new UpdateDbinfo();       
+            updateDbinfo= new UpdateDbinfo();
+            game = new Game();
         }
 
         // Method 1: that Saves Game and User information!
         public void SaveGameAndUsers() {
 
-            createDbInfo.AddGameToDatabase();
-            createDbInfo.AddUserToDatabase(player1);
-            createDbInfo.AddUserToDatabase(player2);
+            createDbInfo.AddGame(game);
+            createDbInfo.AddUser(player1, game);
+            createDbInfo.AddUser(player2, game);
         }
 
         // Method 2: that checks the state of the game!
@@ -92,10 +95,10 @@ namespace NewTicTacToeWithSQL.GameDetails
                         // if it is load game checks the conditions and updates the board! 
                         if (isLoadGame)
                         {
-                            updateDbinfo.UpdateMoveToDatabase(symbol, playerInput, idNumber);
+                            updateDbinfo.UpdateMove(symbol, playerInput, idNumber);
                         }
                         else
-                            createDbInfo.AddMoveToDatabase(symbol, playerInput);
+                            createDbInfo.AddMove(symbol, playerInput, game);
 
                         // checking winning conditions!
                         StateCheck();

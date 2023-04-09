@@ -10,7 +10,7 @@ namespace NewTicTacToeWithSQL.GameDetails
         //Method 1: it is Getting names from User database!
         public void GetNamesFromUser(int idNmuber, out string player1, out string player2)
         {
-            List<User> users = readDbInfo.GetUsersFromDatabase(idNmuber);
+            List<User> users = readDbInfo.GetUsers(idNmuber);
             player1 = string.Empty;
             player2 = string.Empty;
 
@@ -31,7 +31,7 @@ namespace NewTicTacToeWithSQL.GameDetails
         public void ReturnPlayerNumberFromMove(int idNmuber, ref int playerNumber)
         {
             //int playerNumber;
-            List<Move> moves = readDbInfo.GetMovesFromDatabase(idNmuber);
+            List<Move> moves = readDbInfo.GetMoves(idNmuber);
 
             if (moves.Count % 2 == 0)
             {
@@ -43,7 +43,7 @@ namespace NewTicTacToeWithSQL.GameDetails
         //Method 3: getting loaded board from Move database!
         public void GetLoadedBoard(int idNmuber, List<char> loadedBoardList)
         {
-            List<Move> moves = readDbInfo.GetMovesFromDatabase(idNmuber);
+            List<Move> moves = readDbInfo.GetMoves(idNmuber);
 
             foreach (var move in moves)
             {

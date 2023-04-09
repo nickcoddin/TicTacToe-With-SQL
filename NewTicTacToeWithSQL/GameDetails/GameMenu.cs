@@ -47,7 +47,7 @@ namespace NewTicTacToeWithSQL.GameDetails
                     case "2":
                         loadGame = new LoadGame();
                         Board.EmptyBoardList(playingBoardList);
-                        games = readDbInfo.GetAllGamesFromDatabase();
+                        games = readDbInfo.GetAllGames();
                         MenuOption.DisplayGameInfoInMenu(games);
                         idNumber = MenuOption.GameIdChoice();
 
@@ -70,13 +70,13 @@ namespace NewTicTacToeWithSQL.GameDetails
                     
                     // if player wants to delete the game from database!
                     case "3":
-                        games = readDbInfo.GetAllGamesFromDatabase();
+                        games = readDbInfo.GetAllGames();
                         MenuOption.DisplayGameInfoInMenu(games);
                         idNumber = MenuOption.GameIdChoice();
 
                         if (PlayerInputCheck.IsIdNumberValid(idNumber))
                         {
-                            deleteDbInfo.DeleteInfoFromDataBase(idNumber);
+                            deleteDbInfo.DeleteInfo(idNumber);
                             Console.WriteLine("...Done!");
                             Console.WriteLine("PRESS ANY KEY");
                             Console.ReadKey();

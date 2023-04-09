@@ -5,7 +5,7 @@ namespace NewTicTacToeWithSQL.DataAccess
     internal class UpdateDbinfo
     {
         //Method 1: that updates the Loaded game boad!
-        public void UpdateMoveToDatabase(char symbol, int index, int idNumber)
+        public void UpdateMove(char symbol, int index, int idNumber)
         {
             using (var db = new ApplicationDbContext())
             {

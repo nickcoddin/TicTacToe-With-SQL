@@ -5,7 +5,7 @@ namespace NewTicTacToeWithSQL.DataAccess
     internal class ReadDbInfo
     {
         // Method 1: that returns game  from Game database!
-        public List<Game> GetAllGamesFromDatabase()
+        public List<Game> GetAllGames()
         {
             using (var db = new ApplicationDbContext())
             {
@@ -17,7 +17,7 @@ namespace NewTicTacToeWithSQL.DataAccess
         }
 
         // Method 2: that returns user names from User database!
-        public List<User> GetUsersFromDatabase(int gameID)
+        public List<User> GetUsers(int gameID)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -30,7 +30,7 @@ namespace NewTicTacToeWithSQL.DataAccess
         }
 
         // Method 3: that returns moves from Move database!
-        public List<Move> GetMovesFromDatabase(int gameID)
+        public List<Move> GetMoves(int gameID)
         {
             using (var db = new ApplicationDbContext())
             {

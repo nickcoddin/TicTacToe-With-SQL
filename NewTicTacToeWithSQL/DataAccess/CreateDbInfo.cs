@@ -4,10 +4,10 @@ namespace NewTicTacToeWithSQL.DataAccess
 {
     internal class CreateDbInfo
     {
-        Game game = new Game();
+        //Game game = new Game();
 
         //Method 1: Adds time in database!
-        public void AddGameToDatabase()
+        public void AddGame(Game game)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -19,7 +19,7 @@ namespace NewTicTacToeWithSQL.DataAccess
         }
 
         //Method 2: Adds symbols and indexes in database according to the GameID (FK)!
-        public void AddMoveToDatabase(char symbol, int index)
+        public void AddMove(char symbol, int index, Game game)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -30,7 +30,7 @@ namespace NewTicTacToeWithSQL.DataAccess
         }
 
         //Method 3: Adds names in database according to the GameID (FK)!
-        public void AddUserToDatabase(string playerName)
+        public void AddUser(string playerName, Game game)
         {
             using (var db = new ApplicationDbContext())
             {

@@ -3,7 +3,7 @@
     internal class DeleteDbInfo
     {
         //Method 1: that Deletes all game related information according to the number player enters!
-        public void DeleteInfoFromDataBase(int idNumber)
+        public void DeleteInfo(int idNumber)
         {
             using (var db = new ApplicationDbContext())
             {
