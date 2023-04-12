@@ -1,8 +1,9 @@
 ﻿using NewTicTacToeWithSQL.Entities;
+using NewTicTacToeWithSQL.Migrations;
 
 namespace NewTicTacToeWithSQL.DataAccess
 {
-     internal class CreateDbInfo
+      internal class CreateDbInfo
     {
         //Method 1: Adds time in database!
         public void AddGame(Game game)
@@ -16,23 +17,23 @@ namespace NewTicTacToeWithSQL.DataAccess
             }
         }
 
-        //Method 2: Adds symbols and indexes in database according to the GameID (FK)!
-        public void AddMove(char symbol, int index, Game game)
+        //Method 2: Adds symbols and indexes in database according to the GameID (Foreign Key)!
+        public void AddMove(char symbol, int index, int gameId)
         {
             using (var db = new ApplicationDbContext())
             {
-                var move = new Move { GameId = game.Id, Symbol = symbol, Index = index};
+                var move = new Move { GameId = gameId, Symbol = symbol, Index = index};
                 db.Add(move);
                 db.SaveChanges();
             }
         }
 
         //Method 3: Adds names in database according to the GameID (FK)!
-        public void AddUser(string playerName, Game game)
+        public void AddUser(string playerName, int gameId)
         {
             using (var db = new ApplicationDbContext())
             {
-                var user = new User { GameId = game.Id, Name = playerName };
+                var user = new User { GameId = gameId, Name = playerName };
                 db.Add(user);
                 db.SaveChanges();
             }

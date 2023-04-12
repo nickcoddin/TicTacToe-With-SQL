@@ -16,7 +16,6 @@ namespace NewTicTacToeWithSQL.GameDetails
         private char symbol;
         private string player1;
         private string player2;
-        private bool gameWon = false;
 
         // Constructor!
         public TicTacToeGame(List<char> playingBoardList, string player1, string player2, int playerNumber)
@@ -35,8 +34,8 @@ namespace NewTicTacToeWithSQL.GameDetails
         public void SaveGameAndUsers() {
 
             createDbInfo.AddGame(game);
-            createDbInfo.AddUser(player1, game);
-            createDbInfo.AddUser(player2, game);
+            createDbInfo.AddUser(player1, game.Id);
+            createDbInfo.AddUser(player2, game.Id);
         }
 
         // Method 2: that checks the state of the game!
@@ -98,7 +97,7 @@ namespace NewTicTacToeWithSQL.GameDetails
                             updateDbinfo.UpdateMove(symbol, playerInput, idNumber);
                         }
                         else
-                            createDbInfo.AddMove(symbol, playerInput, game);
+                            createDbInfo.AddMove(symbol, playerInput, game.Id);
 
                         // checking winning conditions!
                         StateCheck();
