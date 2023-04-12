@@ -52,7 +52,7 @@ namespace NewTicTacToeWithSQL.GameDetails
                         idNumber = MenuOption.GameIdChoice();
 
                         // if input is  valid load the game else return to main menu!
-                        if (PlayerInputCheck.IsIdNumberValid(idNumber))
+                        if (readDbInfo.IsIdNumberValid(idNumber))
                         {
                             loadGame.GetNamesAndMovesFromDatabase(idNumber, ref player1, ref player2, playingBoardList, ref playerNumber);
                             ticTacToeGame = new TicTacToeGame(playingBoardList, player1, player2, playerNumber);
@@ -74,7 +74,7 @@ namespace NewTicTacToeWithSQL.GameDetails
                         MenuOption.DisplayGameInfoInMenu(games);
                         idNumber = MenuOption.GameIdChoice();
 
-                        if (PlayerInputCheck.IsIdNumberValid(idNumber))
+                        if (readDbInfo.IsIdNumberValid(idNumber))
                         {
                             deleteDbInfo.DeleteInfo(idNumber);
                             Console.WriteLine("...Done!");

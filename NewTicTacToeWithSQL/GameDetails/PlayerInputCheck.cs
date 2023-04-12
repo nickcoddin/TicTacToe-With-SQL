@@ -29,15 +29,5 @@ namespace NewTicTacToeWithSQL.GameDetails
             else
                 return false;
         }
-
-        //Method 3: checks if IdNumber that 
-        public static bool IsIdNumberValid(int idNumber)
-        {
-            using (var db = new ApplicationDbContext())
-            {
-                var game = db.Games.FirstOrDefault(g => g.Id == idNumber);
-                return game != null;
-            }
-        }
     }
 }

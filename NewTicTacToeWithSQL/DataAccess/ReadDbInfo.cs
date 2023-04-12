@@ -40,5 +40,15 @@ namespace NewTicTacToeWithSQL.DataAccess
                 return moves;
             }
         }
+
+        //Method 4: checks if IdNumber that input is in database!
+        public bool IsIdNumberValid(int idNumber)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var game = db.Games.FirstOrDefault(g => g.Id == idNumber);
+                return game != null;
+            }
+        }
     }
 } 
